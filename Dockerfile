@@ -14,7 +14,7 @@ RUN curl -fsSL https://get.docker.com/builds/Linux/x86_64/docker-${DOCKER_CLIENT
 
 RUN mkdir -p $SERVICE_HOME $SERVICE_WORK && \
     apt-get update && \
-    apt-get install -y python build-essential g++ libssl-dev apache2-utils git libxml2-dev && \
+    apt-get install -y tmux python build-essential g++ libssl-dev apache2-utils git libxml2-dev && \
     git clone $SERVICE_URL $SERVICE_HOME && \
     cd $SERVICE_HOME && \
     scripts/install-sdk.sh && \
