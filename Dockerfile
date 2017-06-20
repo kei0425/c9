@@ -6,20 +6,11 @@ ENV SERVICE_HOME=/opt/cloud9 \
     SERVICE_URL=https://github.com/c9/core.git \
     SERVICE_WORK=/workspace
     
-# install docker
-RUN apt-get install \
-     apt-transport-https \
-     ca-certificates \
-     curl \
-     gnupg2 \
-     software-properties-common
-RUN curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add -
-RUN add-apt-repository \
-   "deb [arch=amd64] https://download.docker.com/linux/debian \
-   $(lsb_release -cs) \
-   stable"
-RUN apt-get update
-RUN apt-get install docker-ce
+# install docker client
+ENV DOCKER_CLIENT_VERSION=1.12.3
+ENV DOCKER_API_VERSION=1.24
+RUN curl -fsSL https://get.docker.com/builds/Linux/x86_64/docker-${DOCKER_CLIENT_VERSION}.tgz \
+  | tar -xzC /usr/local/bin --strip=1 docker/docker
 
 RUN mkdir -p $SERVICE_HOME $SERVICE_WORK && \
     apt-get update && \
