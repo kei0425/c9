@@ -19,7 +19,7 @@ RUN mkdir -p $SERVICE_HOME $SERVICE_WORK && \
     cd $SERVICE_HOME && \
     scripts/install-sdk.sh && \
     sed -i -e 's_127.0.0.1_0.0.0.0_g' $SERVICE_HOME/configs/standalone.js && \
-    apt-get autoremove -y build-essential libssl-dev g++ libxml2-dev && \
+    apt-get autoremove -y build-essential libssl-dev libxml2-dev && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* 
 
